@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrsHobby.com - Menu Mockup</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        .demo-section {
+            margin-bottom: 60px;
+        }
+        
+        .demo-section h2 {
+            color: #555;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        /* Top Navigation Bar */
+        .top-nav {
+            background: #2c3e50;
+            padding: 15px 30px;
+            display: flex;
+            gap: 30px;
+            position: relative;
+        }
+        
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            position: relative;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* Mega Menu Dropdown */
+        .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            padding: 40px;
+            z-index: 1000;
+        }
+        
+        .nav-item:hover .mega-menu {
+            display: block;
+        }
+        
+        .mega-menu-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .mega-menu h3 {
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        @media (max-width: 1024px) {
+            .brand-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .brand-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .brand-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #007bff;
+        }
+        
+        .brand-logo {
+            width: 100%;
+            height: 120px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #6c757d;
+            font-weight: bold;
+        }
+        
+        .brand-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: #333;
+            margin-top: 5px;
+        }
+        
+        .more-brands {
+            border-top: 2px solid #e9ecef;
+            padding-top: 20px;
+            margin-top: 10px;
+        }
+        
+        .more-brands h4 {
+            color: #6c757d;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .brand-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .brand-links a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .brand-links a:hover {
+            background: #e7f3ff;
+        }
+        
+        /* Side Menu */
+        .side-menu {
+            width: 280px;
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .side-menu-header {
+            background: #2c3e50;
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .category-item {
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .category-header {
+            padding: 15px 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background 0.3s;
+            user-select: none;
+        }
+        
+        .category-header:hover {
+            background: #f8f9fa;
+        }
+        
+        .category-icon {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .category-name {
+            flex: 1;
+            font-weight: 500;
+            color: #333;
+        }
+        
+        .category-toggle {
+            color: #6c757d;
+            font-size: 18px;
+            transition: transform 0.3s;
+        }
+        
+        .category-item.expanded .category-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .subcategories {
+            display: none;
+            background: #f8f9fa;
+            padding: 10px 20px 10px 56px;
+        }
+        
+        .category-item.expanded .subcategories {
+            display: block;
+        }
+        
+        .subcategory-link {
+            display: block;
+            padding: 8px 0;
+            color: #495057;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+        
+        .subcategory-link:hover {
+            color: #007bff;
+            padding-left: 5px;
+        }
+        
+        .layout-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        @media (max-width: 968px) {
+            .layout-comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .note {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            border-radius: 4px;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 MrsHobby.com - Navigation Mockup</h1>
+        
+        <div class="demo-section">
+            <h2>Top Navigation - Mega Menu with Brand Logos</h2>
+            <p style="margin-bottom: 20px; color: #666;">Hover over "MAIN BRANDS" to see the mega menu dropdown</p>
+            
+            <div class="top-nav">
+                <span class="nav-item">HOME</span>
+                <span class="nav-item">
+                    MAIN BRANDS
+                    <div class="mega-menu">
+                        <div class="mega-menu-content">
+                            <h3>Shop by Brand</h3>
+                            <div class="brand-grid">
+                                <!-- Row 1 -->
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">CITADEL</div>
+                                    <div class="brand-name">Citadel</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">ARMY PAINTER</div>
+                                    <div class="brand-name">The Army Painter</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">VALLEJO</div>
+                                    <div class="brand-name">Vallejo</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">GAMES WORKSHOP</div>
+                                    <div class="brand-name">Games Workshop</div>
+                                </a>
+                                
+                                <!-- Row 2 -->
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">WIZKIDS</div>
+                                    <div class="brand-name">WizKids</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">REAPER</div>
+                                    <div class="brand-name">Reaper Miniatures</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">TAMIYA</div>
+                                    <div class="brand-name">Tamiya</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">GUNDAM</div>
+                                    <div class="brand-name">Gundam</div>
+                                </a>
+                                
+                                <!-- Row 3 -->
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">TESTORS</div>
+                                    <div class="brand-name">Testors</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">AK INTERACTIVE</div>
+                                    <div class="brand-name">AK Interactive</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">SCALE75</div>
+                                    <div class="brand-name">Scale75</div>
+                                </a>
+                                <a href="#" class="brand-card">
+                                    <div class="brand-logo">GREEN STUFF WORLD</div>
+                                    <div class="brand-name">Green Stuff World</div>
+                                </a>
+                            </div>
+                            <div class="more-brands">
+                                <h4>More Brands</h4>
+                                <div class="brand-links">
+                                    <a href="#">Bandai</a>
+                                    <a href="#">Secret Weapon</a>
+                                    <a href="#">Winsor & Newton</a>
+                                    <a href="#">Mr. Hobby</a>
+                                    <a href="#">Mig Ammo</a>
+                                    <a href="#">P3 Paints</a>
+                                    <a href="#">Privateer Press</a>
+                                    <a href="#">Badger</a>
+                                    <a href="#">Iwata</a>
+                                    <a href="#">Revell</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
+                <span class="nav-item">SHOP BY CATEGORY</span>
+                <span class="nav-item">NEW ARRIVALS</span>
+                <span class="nav-item">SALE</span>
+            </div>
+            
+            <div class="note">
+                <strong>Note:</strong> In the real implementation, each brand logo box would contain the actual brand logo image. These are just placeholders showing the brand names.
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>Side Navigation - Enhanced with Icons</h2>
+            <p style="margin-bottom: 20px; color: #666;">Click on categories to expand/collapse subcategories</p>
+            
+            <div class="side-menu">
+                <div class="side-menu-header">SHOP BY CATEGORY</div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">🎨</span>
+                        <span class="category-name">Paints & Supplies</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Acrylic Paints</a>
+                        <a href="#" class="subcategory-link">Oil & Enamel Paints</a>
+                        <a href="#" class="subcategory-link">Spray Primers</a>
+                        <a href="#" class="subcategory-link">Brushes</a>
+                        <a href="#" class="subcategory-link">Airbrush Supplies</a>
+                        <a href="#" class="subcategory-link">Paint Sets</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">🪖</span>
+                        <span class="category-name">Miniatures</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Warhammer 40K</a>
+                        <a href="#" class="subcategory-link">Age of Sigmar</a>
+                        <a href="#" class="subcategory-link">D&D Miniatures</a>
+                        <a href="#" class="subcategory-link">Historical Miniatures</a>
+                        <a href="#" class="subcategory-link">Sci-Fi Miniatures</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">🎲</span>
+                        <span class="category-name">Board Games</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Strategy Games</a>
+                        <a href="#" class="subcategory-link">Card Games</a>
+                        <a href="#" class="subcategory-link">Family Games</a>
+                        <a href="#" class="subcategory-link">Party Games</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">🛠️</span>
+                        <span class="category-name">Tools & Accessories</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Hobby Knives</a>
+                        <a href="#" class="subcategory-link">Clippers & Cutters</a>
+                        <a href="#" class="subcategory-link">Files & Sandpaper</a>
+                        <a href="#" class="subcategory-link">Glues & Adhesives</a>
+                        <a href="#" class="subcategory-link">Modeling Tools</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">📚</span>
+                        <span class="category-name">Books & Rulebooks</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Warhammer Codexes</a>
+                        <a href="#" class="subcategory-link">D&D Sourcebooks</a>
+                        <a href="#" class="subcategory-link">Modeling Guides</a>
+                        <a href="#" class="subcategory-link">Painting Tutorials</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">🏰</span>
+                        <span class="category-name">Terrain & Bases</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Resin Bases</a>
+                        <a href="#" class="subcategory-link">Terrain Pieces</a>
+                        <a href="#" class="subcategory-link">Buildings</a>
+                        <a href="#" class="subcategory-link">Scatter Terrain</a>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="category-header" onclick="toggleCategory(this)">
+                        <span class="category-icon">✂️</span>
+                        <span class="category-name">Model Kits</span>
+                        <span class="category-toggle">▼</span>
+                    </div>
+                    <div class="subcategories">
+                        <a href="#" class="subcategory-link">Gundam Models</a>
+                        <a href="#" class="subcategory-link">Aircraft Models</a>
+                        <a href="#" class="subcategory-link">Vehicle Models</a>
+                        <a href="#" class="subcategory-link">Figure Models</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function toggleCategory(header) {
+            const categoryItem = header.parentElement;
+            categoryItem.classList.toggle('expanded');
+        }
+    </script>
+</body>
+</html>

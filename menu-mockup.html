@@ -512,7 +512,29 @@
             z-index: 1600;
             transition: right 0.3s;
             overflow-y: auto;
-            padding: 80px 20px 20px;
+            padding: 60px 20px 20px;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 40px;
+            height: 40px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            color: #2c3e50;
+            transition: background 0.3s;
+        }
+        
+        .mobile-menu-close:hover {
+            background: #e9ecef;
         }
         
         .mobile-menu-panel.active {
@@ -660,6 +682,7 @@
         
         <!-- Mobile Menu Panel -->
         <div class="mobile-menu-panel" id="mobileMenuPanel">
+            <button class="mobile-menu-close" onclick="toggleMobileMenu()">×</button>
             <div class="mobile-menu-section">
                 <h3>Navigation</h3>
                 <a href="index.html" class="mobile-brand-link">Home</a>
@@ -670,7 +693,7 @@
             
             <div class="mobile-menu-section">
                 <h3>Popular Brands</h3>
-                <div class="mobile-brand-list">
+                <div class="mobile-brand-list" id="mobileBrandList">
                     <a href="#" class="mobile-brand-link">Citadel</a>
                     <a href="#" class="mobile-brand-link">The Army Painter</a>
                     <a href="#" class="mobile-brand-link">Vallejo</a>
@@ -681,8 +704,26 @@
                     <a href="#" class="mobile-brand-link">Gundam</a>
                     <a href="#" class="mobile-brand-link">Testors</a>
                     <a href="#" class="mobile-brand-link">AK Interactive</a>
+                    
+                    <!-- Hidden brands - shown when expanded -->
+                    <div id="moreBrands" style="display: none; margin-top: 10px;">
+                        <a href="#" class="mobile-brand-link">Scale75</a>
+                        <a href="#" class="mobile-brand-link">Green Stuff World</a>
+                        <a href="#" class="mobile-brand-link">Bandai</a>
+                        <a href="#" class="mobile-brand-link">Secret Weapon</a>
+                        <a href="#" class="mobile-brand-link">Winsor & Newton</a>
+                        <a href="#" class="mobile-brand-link">Mr. Hobby</a>
+                        <a href="#" class="mobile-brand-link">Mig Ammo</a>
+                        <a href="#" class="mobile-brand-link">P3 Paints</a>
+                        <a href="#" class="mobile-brand-link">Privateer Press</a>
+                        <a href="#" class="mobile-brand-link">Badger</a>
+                        <a href="#" class="mobile-brand-link">Iwata</a>
+                        <a href="#" class="mobile-brand-link">Revell</a>
+                        <a href="#" class="mobile-brand-link">Italeri</a>
+                        <a href="#" class="mobile-brand-link">Academy</a>
+                    </div>
                 </div>
-                <a href="#" class="mobile-brand-link" style="background: #007bff; color: white; text-align: center; font-weight: 600; margin-top: 10px;">View All Brands →</a>
+                <a href="#" class="mobile-brand-link" id="viewAllBrandsBtn" onclick="toggleBrands(event)" style="background: #007bff; color: white; text-align: center; font-weight: 600; margin-top: 10px;">View All Brands →</a>
             </div>
             
             <div class="mobile-menu-section">
@@ -1131,6 +1172,24 @@
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = '';
+            }
+        }
+        
+        function toggleBrands(event) {
+            event.preventDefault();
+            const moreBrands = document.getElementById('moreBrands');
+            const btn = document.getElementById('viewAllBrandsBtn');
+            
+            if (moreBrands.style.display === 'none') {
+                // Expand to show all brands
+                moreBrands.style.display = 'block';
+                btn.textContent = '← Show Less';
+                btn.style.background = '#6c757d';
+            } else {
+                // Collapse to show only top 10
+                moreBrands.style.display = 'none';
+                btn.textContent = 'View All Brands →';
+                btn.style.background = '#007bff';
             }
         }
     </script>

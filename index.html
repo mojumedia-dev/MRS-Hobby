@@ -515,6 +515,29 @@
             padding: 60px 20px 20px;
         }
         
+        .mobile-menu-panel.slide-left {
+            right: 100%;
+        }
+        
+        /* All Brands Sub-Panel */
+        .mobile-brands-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: white;
+            z-index: 1700;
+            transition: right 0.3s;
+            overflow-y: auto;
+            padding: 60px 20px 20px;
+        }
+        
+        .mobile-brands-panel.active {
+            right: 0;
+        }
+        
         .mobile-menu-close {
             position: absolute;
             top: 15px;
@@ -531,10 +554,37 @@
             font-size: 24px;
             color: #2c3e50;
             transition: background 0.3s;
+            z-index: 10;
         }
         
         .mobile-menu-close:hover {
             background: #e9ecef;
+        }
+        
+        .mobile-back-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        
+        .mobile-back-btn:hover {
+            background: #e9ecef;
+        }
+        
+        .all-brands-grid {
+            display: grid;
+            gap: 10px;
         }
         
         .mobile-menu-panel.active {
@@ -693,7 +743,7 @@
             
             <div class="mobile-menu-section">
                 <h3>Popular Brands</h3>
-                <div class="mobile-brand-list" id="mobileBrandList">
+                <div class="mobile-brand-list">
                     <a href="#" class="mobile-brand-link">Citadel</a>
                     <a href="#" class="mobile-brand-link">The Army Painter</a>
                     <a href="#" class="mobile-brand-link">Vallejo</a>
@@ -704,26 +754,8 @@
                     <a href="#" class="mobile-brand-link">Gundam</a>
                     <a href="#" class="mobile-brand-link">Testors</a>
                     <a href="#" class="mobile-brand-link">AK Interactive</a>
-                    
-                    <!-- Hidden brands - shown when expanded -->
-                    <div id="moreBrands" style="display: none; margin-top: 10px;">
-                        <a href="#" class="mobile-brand-link">Scale75</a>
-                        <a href="#" class="mobile-brand-link">Green Stuff World</a>
-                        <a href="#" class="mobile-brand-link">Bandai</a>
-                        <a href="#" class="mobile-brand-link">Secret Weapon</a>
-                        <a href="#" class="mobile-brand-link">Winsor & Newton</a>
-                        <a href="#" class="mobile-brand-link">Mr. Hobby</a>
-                        <a href="#" class="mobile-brand-link">Mig Ammo</a>
-                        <a href="#" class="mobile-brand-link">P3 Paints</a>
-                        <a href="#" class="mobile-brand-link">Privateer Press</a>
-                        <a href="#" class="mobile-brand-link">Badger</a>
-                        <a href="#" class="mobile-brand-link">Iwata</a>
-                        <a href="#" class="mobile-brand-link">Revell</a>
-                        <a href="#" class="mobile-brand-link">Italeri</a>
-                        <a href="#" class="mobile-brand-link">Academy</a>
-                    </div>
                 </div>
-                <a href="#" class="mobile-brand-link" id="viewAllBrandsBtn" onclick="toggleBrands(event)" style="background: #007bff; color: white; text-align: center; font-weight: 600; margin-top: 10px;">View All Brands →</a>
+                <a href="#" class="mobile-brand-link" onclick="showAllBrands(event)" style="background: #007bff; color: white; text-align: center; font-weight: 600; margin-top: 10px;">View All Brands →</a>
             </div>
             
             <div class="mobile-menu-section">
@@ -738,6 +770,38 @@
                     <a href="#" class="mobile-brand-link">✂️ Model Kits</a>
                     <a href="#" class="mobile-brand-link">🎨 Hobby Supplies</a>
                 </div>
+            </div>
+        </div>
+        
+        <!-- All Brands Sub-Panel -->
+        <div class="mobile-brands-panel" id="mobileBrandsPanel">
+            <button class="mobile-back-btn" onclick="hideAllBrands()">← Back to Menu</button>
+            <h2 style="color: #2c3e50; margin-bottom: 20px; font-size: 24px;">All Brands</h2>
+            <div class="all-brands-grid">
+                <a href="#" class="mobile-brand-link">Citadel</a>
+                <a href="#" class="mobile-brand-link">The Army Painter</a>
+                <a href="#" class="mobile-brand-link">Vallejo</a>
+                <a href="#" class="mobile-brand-link">Games Workshop</a>
+                <a href="#" class="mobile-brand-link">WizKids</a>
+                <a href="#" class="mobile-brand-link">Reaper Miniatures</a>
+                <a href="#" class="mobile-brand-link">Tamiya</a>
+                <a href="#" class="mobile-brand-link">Gundam</a>
+                <a href="#" class="mobile-brand-link">Testors</a>
+                <a href="#" class="mobile-brand-link">AK Interactive</a>
+                <a href="#" class="mobile-brand-link">Scale75</a>
+                <a href="#" class="mobile-brand-link">Green Stuff World</a>
+                <a href="#" class="mobile-brand-link">Bandai</a>
+                <a href="#" class="mobile-brand-link">Secret Weapon</a>
+                <a href="#" class="mobile-brand-link">Winsor & Newton</a>
+                <a href="#" class="mobile-brand-link">Mr. Hobby</a>
+                <a href="#" class="mobile-brand-link">Mig Ammo</a>
+                <a href="#" class="mobile-brand-link">P3 Paints</a>
+                <a href="#" class="mobile-brand-link">Privateer Press</a>
+                <a href="#" class="mobile-brand-link">Badger</a>
+                <a href="#" class="mobile-brand-link">Iwata</a>
+                <a href="#" class="mobile-brand-link">Revell</a>
+                <a href="#" class="mobile-brand-link">Italeri</a>
+                <a href="#" class="mobile-brand-link">Academy</a>
             </div>
         </div>
         
@@ -1162,10 +1226,17 @@
             const toggle = document.querySelector('.mobile-menu-toggle');
             const overlay = document.querySelector('.mobile-menu-overlay');
             const panel = document.querySelector('.mobile-menu-panel');
+            const brandsPanel = document.getElementById('mobileBrandsPanel');
             
             toggle.classList.toggle('active');
             overlay.classList.toggle('active');
             panel.classList.toggle('active');
+            
+            // Close brands panel if open
+            if (!panel.classList.contains('active')) {
+                panel.classList.remove('slide-left');
+                brandsPanel.classList.remove('active');
+            }
             
             // Prevent body scroll when menu is open
             if (panel.classList.contains('active')) {
@@ -1175,22 +1246,27 @@
             }
         }
         
-        function toggleBrands(event) {
+        function showAllBrands(event) {
             event.preventDefault();
-            const moreBrands = document.getElementById('moreBrands');
-            const btn = document.getElementById('viewAllBrandsBtn');
+            const mainPanel = document.getElementById('mobileMenuPanel');
+            const brandsPanel = document.getElementById('mobileBrandsPanel');
             
-            if (moreBrands.style.display === 'none') {
-                // Expand to show all brands
-                moreBrands.style.display = 'block';
-                btn.textContent = '← Show Less';
-                btn.style.background = '#6c757d';
-            } else {
-                // Collapse to show only top 10
-                moreBrands.style.display = 'none';
-                btn.textContent = 'View All Brands →';
-                btn.style.background = '#007bff';
-            }
+            // Slide main menu left
+            mainPanel.classList.add('slide-left');
+            
+            // Slide brands panel in from right
+            brandsPanel.classList.add('active');
+        }
+        
+        function hideAllBrands() {
+            const mainPanel = document.getElementById('mobileMenuPanel');
+            const brandsPanel = document.getElementById('mobileBrandsPanel');
+            
+            // Slide main menu back to center
+            mainPanel.classList.remove('slide-left');
+            
+            // Slide brands panel out to right
+            brandsPanel.classList.remove('active');
         }
     </script>
 </body>

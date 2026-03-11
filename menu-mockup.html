@@ -75,7 +75,7 @@
             right: 0;
             background: white;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-            padding: 40px;
+            padding: 30px 20px;
             z-index: 1000;
         }
         
@@ -90,16 +90,17 @@
         
         .mega-menu h3 {
             color: #2c3e50;
-            margin-bottom: 25px;
-            font-size: 24px;
+            margin-bottom: 20px;
+            font-size: 18px;
             text-align: center;
+            font-weight: 600;
         }
         
         .brand-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-bottom: 30px;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
         @media (max-width: 1024px) {
@@ -111,6 +112,24 @@
         @media (max-width: 768px) {
             .brand-grid {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .mega-menu {
+                padding: 20px 15px;
+            }
+            
+            .mega-menu h3 {
+                font-size: 16px;
+                margin-bottom: 15px;
+            }
+            
+            .brand-card {
+                padding: 10px;
+            }
+            
+            .brand-name {
+                font-size: 12px;
             }
         }
         
@@ -118,7 +137,7 @@
             background: #f8f9fa;
             border: 2px solid #e9ecef;
             border-radius: 8px;
-            padding: 25px 20px;
+            padding: 15px;
             text-align: center;
             transition: all 0.3s;
             cursor: pointer;
@@ -134,38 +153,38 @@
         
         .brand-logo {
             width: 100%;
-            height: 120px;
+            aspect-ratio: 3/2;
             background: white;
             border: 1px solid #dee2e6;
             border-radius: 4px;
-            margin: 0 auto 15px;
+            margin: 0 auto 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 16px;
+            font-size: 14px;
             color: #6c757d;
             font-weight: bold;
         }
         
         .brand-name {
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 600;
             color: #333;
-            margin-top: 5px;
         }
         
         .more-brands {
-            border-top: 2px solid #e9ecef;
-            padding-top: 20px;
-            margin-top: 10px;
+            border-top: 1px solid #e9ecef;
+            padding-top: 15px;
+            margin-top: 5px;
         }
         
         .more-brands h4 {
             color: #6c757d;
-            font-size: 14px;
+            font-size: 12px;
             text-transform: uppercase;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-align: center;
+            letter-spacing: 0.5px;
         }
         
         .brand-links {

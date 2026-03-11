@@ -69,8 +69,11 @@
             max-height: 80vh;
         }
         
-        .nav-item:hover .mega-menu {
-            display: block;
+        /* Desktop hover for mega menu */
+        @media (min-width: 769px) {
+            .nav-item:hover .mega-menu {
+                display: block;
+            }
         }
         
         .mega-menu-content {
@@ -328,6 +331,16 @@
         
         /* Mobile-specific styles */
         @media (max-width: 768px) {
+            /* Show mobile menu toggle */
+            .mobile-menu-toggle {
+                display: flex !important;
+            }
+            
+            /* Hide desktop navigation on mobile */
+            .top-nav {
+                display: none !important;
+            }
+            
             /* Header adjustments */
             body > div > div:first-child {
                 padding: 10px 15px !important;
@@ -413,6 +426,111 @@
             font-size: 14px;
             color: #856404;
         }
+        
+        /* Mobile Menu Toggle Button */
+        .mobile-menu-toggle {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 2000;
+            background: #2c3e50;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: white;
+            transition: 0.3s;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .mobile-menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+        
+        .mobile-menu-overlay.active {
+            display: block;
+        }
+        
+        /* Mobile Menu Panel */
+        .mobile-menu-panel {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100%;
+            background: white;
+            z-index: 1600;
+            transition: right 0.3s;
+            overflow-y: auto;
+            padding: 80px 20px 20px;
+        }
+        
+        .mobile-menu-panel.active {
+            right: 0;
+        }
+        
+        .mobile-menu-section {
+            margin-bottom: 30px;
+        }
+        
+        .mobile-menu-section h3 {
+            color: #2c3e50;
+            font-size: 14px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .mobile-brand-list {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .mobile-brand-link {
+            padding: 12px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            display: block;
+            transition: background 0.3s;
+        }
+        
+        .mobile-brand-link:hover {
+            background: #e9ecef;
+        }
     </style>
 </head>
 <body>
@@ -430,13 +548,65 @@
             </div>
         </div>
         
+        <!-- Mobile Hamburger Button -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+        
+        <!-- Mobile Menu Panel -->
+        <div class="mobile-menu-panel" id="mobileMenuPanel">
+            <div class="mobile-menu-section">
+                <h3>Navigation</h3>
+                <a href="#" class="mobile-brand-link">Home</a>
+                <a href="#" class="mobile-brand-link">Shop by Category</a>
+                <a href="#" class="mobile-brand-link">New Arrivals</a>
+                <a href="#" class="mobile-brand-link">Sale</a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <h3>Main Brands</h3>
+                <div class="mobile-brand-list">
+                    <a href="#" class="mobile-brand-link">Citadel</a>
+                    <a href="#" class="mobile-brand-link">The Army Painter</a>
+                    <a href="#" class="mobile-brand-link">Vallejo</a>
+                    <a href="#" class="mobile-brand-link">Games Workshop</a>
+                    <a href="#" class="mobile-brand-link">WizKids</a>
+                    <a href="#" class="mobile-brand-link">Reaper Miniatures</a>
+                    <a href="#" class="mobile-brand-link">Tamiya</a>
+                    <a href="#" class="mobile-brand-link">Gundam</a>
+                    <a href="#" class="mobile-brand-link">Testors</a>
+                    <a href="#" class="mobile-brand-link">AK Interactive</a>
+                    <a href="#" class="mobile-brand-link">Scale75</a>
+                    <a href="#" class="mobile-brand-link">Green Stuff World</a>
+                    <a href="#" class="mobile-brand-link">Bandai</a>
+                    <a href="#" class="mobile-brand-link">Secret Weapon</a>
+                    <a href="#" class="mobile-brand-link">Winsor & Newton</a>
+                    <a href="#" class="mobile-brand-link">Mr. Hobby</a>
+                    <a href="#" class="mobile-brand-link">Mig Ammo</a>
+                    <a href="#" class="mobile-brand-link">P3 Paints</a>
+                    <a href="#" class="mobile-brand-link">Privateer Press</a>
+                    <a href="#" class="mobile-brand-link">Badger</a>
+                    <a href="#" class="mobile-brand-link">Iwata</a>
+                    <a href="#" class="mobile-brand-link">Revell</a>
+                    <a href="#" class="mobile-brand-link">Italeri</a>
+                    <a href="#" class="mobile-brand-link">Academy</a>
+                    <a href="#" class="mobile-brand-link">View All Brands →</a>
+                </div>
+            </div>
+        </div>
+        
         <!-- Navigation -->
         <div class="demo-section" style="margin: 0;">
-            <div class="top-nav">
+            <div class="top-nav" id="mainNav">
                 <span class="nav-item">HOME</span>
-                <span class="nav-item">
+                <span class="nav-item" id="brandsNavItem">
                     MAIN BRANDS
-                    <div class="mega-menu">
+                    <div class="mega-menu" id="megaMenu">
                         <div class="mega-menu-content">
                             <h3>Shop by Brand</h3>
                             <div class="brand-grid">
@@ -765,6 +935,23 @@
         function toggleCategory(header) {
             const categoryItem = header.parentElement;
             categoryItem.classList.toggle('expanded');
+        }
+        
+        function toggleMobileMenu() {
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const overlay = document.querySelector('.mobile-menu-overlay');
+            const panel = document.querySelector('.mobile-menu-panel');
+            
+            toggle.classList.toggle('active');
+            overlay.classList.toggle('active');
+            panel.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            if (panel.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
         }
     </script>
 </body>

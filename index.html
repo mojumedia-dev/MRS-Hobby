@@ -109,6 +109,10 @@
                 grid-template-columns: repeat(3, 1fr);
             }
             
+            .category-mega-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
             .mega-menu-content {
                 max-width: 100%;
                 padding: 0 15px;
@@ -119,6 +123,23 @@
             .brand-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
+            }
+            
+            .category-mega-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .category-mega-card {
+                padding: 15px;
+            }
+            
+            .category-icon {
+                font-size: 28px;
+            }
+            
+            .category-mega-card h4 {
+                font-size: 14px;
             }
             
             .mega-menu {
@@ -531,6 +552,85 @@
         .mobile-brand-link:hover {
             background: #e9ecef;
         }
+        
+        /* Category Mega Menu */
+        .category-mega-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .category-mega-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+        
+        .category-mega-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #007bff;
+        }
+        
+        .category-icon {
+            font-size: 36px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+        
+        .category-mega-card h4 {
+            color: #2c3e50;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .category-mega-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 12px 0;
+        }
+        
+        .category-mega-card ul li {
+            margin-bottom: 8px;
+        }
+        
+        .category-mega-card ul li a {
+            color: #495057;
+            text-decoration: none;
+            font-size: 13px;
+            display: block;
+            padding: 4px 0;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+        
+        .category-mega-card ul li a:hover {
+            color: #007bff;
+            padding-left: 8px;
+        }
+        
+        .category-mega-card .view-all {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            display: block;
+            text-align: center;
+            padding: 8px;
+            border-top: 1px solid #e9ecef;
+            margin-top: 8px;
+            transition: background 0.3s;
+        }
+        
+        .category-mega-card .view-all:hover {
+            background: #e7f3ff;
+        }
     </style>
 </head>
 <body>
@@ -563,9 +663,22 @@
             <div class="mobile-menu-section">
                 <h3>Navigation</h3>
                 <a href="#" class="mobile-brand-link">Home</a>
-                <a href="#" class="mobile-brand-link">Shop by Category</a>
                 <a href="#" class="mobile-brand-link">New Arrivals</a>
                 <a href="#" class="mobile-brand-link">Sale</a>
+            </div>
+            
+            <div class="mobile-menu-section">
+                <h3>Categories</h3>
+                <div class="mobile-brand-list">
+                    <a href="#" class="mobile-brand-link">🎨 Paints & Supplies</a>
+                    <a href="#" class="mobile-brand-link">🪖 Miniatures</a>
+                    <a href="#" class="mobile-brand-link">🎲 Board Games</a>
+                    <a href="#" class="mobile-brand-link">🛠️ Tools & Accessories</a>
+                    <a href="#" class="mobile-brand-link">📚 Books & Rulebooks</a>
+                    <a href="#" class="mobile-brand-link">🏰 Terrain & Bases</a>
+                    <a href="#" class="mobile-brand-link">✂️ Model Kits</a>
+                    <a href="#" class="mobile-brand-link">🎨 Hobby Supplies</a>
+                </div>
             </div>
             
             <div class="mobile-menu-section">
@@ -735,7 +848,127 @@
                         </div>
                     </div>
                 </span>
-                <span class="nav-item">SHOP BY CATEGORY</span>
+                <span class="nav-item">
+                    SHOP BY CATEGORY
+                    <div class="mega-menu" id="categoriesMegaMenu">
+                        <div class="mega-menu-content">
+                            <h3>Shop by Category</h3>
+                            <div class="category-mega-grid">
+                                <!-- Paints & Supplies -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🎨</div>
+                                    <h4>Paints & Supplies</h4>
+                                    <ul>
+                                        <li><a href="#">Acrylic Paints</a></li>
+                                        <li><a href="#">Oil & Enamel Paints</a></li>
+                                        <li><a href="#">Spray Primers</a></li>
+                                        <li><a href="#">Brushes</a></li>
+                                        <li><a href="#">Airbrush Supplies</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Miniatures -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🪖</div>
+                                    <h4>Miniatures</h4>
+                                    <ul>
+                                        <li><a href="#">Warhammer 40K</a></li>
+                                        <li><a href="#">Age of Sigmar</a></li>
+                                        <li><a href="#">D&D Miniatures</a></li>
+                                        <li><a href="#">Historical Minis</a></li>
+                                        <li><a href="#">Sci-Fi Miniatures</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Board Games -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🎲</div>
+                                    <h4>Board Games</h4>
+                                    <ul>
+                                        <li><a href="#">Strategy Games</a></li>
+                                        <li><a href="#">Card Games</a></li>
+                                        <li><a href="#">Family Games</a></li>
+                                        <li><a href="#">Party Games</a></li>
+                                        <li><a href="#">RPG Games</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Tools & Accessories -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🛠️</div>
+                                    <h4>Tools & Accessories</h4>
+                                    <ul>
+                                        <li><a href="#">Hobby Knives</a></li>
+                                        <li><a href="#">Clippers & Cutters</a></li>
+                                        <li><a href="#">Files & Sandpaper</a></li>
+                                        <li><a href="#">Glues & Adhesives</a></li>
+                                        <li><a href="#">Modeling Tools</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Books & Rulebooks -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">📚</div>
+                                    <h4>Books & Rulebooks</h4>
+                                    <ul>
+                                        <li><a href="#">Warhammer Codexes</a></li>
+                                        <li><a href="#">D&D Sourcebooks</a></li>
+                                        <li><a href="#">Modeling Guides</a></li>
+                                        <li><a href="#">Painting Tutorials</a></li>
+                                        <li><a href="#">Campaign Books</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Terrain & Bases -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🏰</div>
+                                    <h4>Terrain & Bases</h4>
+                                    <ul>
+                                        <li><a href="#">Resin Bases</a></li>
+                                        <li><a href="#">Terrain Pieces</a></li>
+                                        <li><a href="#">Buildings</a></li>
+                                        <li><a href="#">Scatter Terrain</a></li>
+                                        <li><a href="#">Gaming Mats</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Model Kits -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">✂️</div>
+                                    <h4>Model Kits</h4>
+                                    <ul>
+                                        <li><a href="#">Gundam Models</a></li>
+                                        <li><a href="#">Aircraft Models</a></li>
+                                        <li><a href="#">Vehicle Models</a></li>
+                                        <li><a href="#">Figure Models</a></li>
+                                        <li><a href="#">Ship Models</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                                
+                                <!-- Hobby Supplies -->
+                                <div class="category-mega-card">
+                                    <div class="category-icon">🎨</div>
+                                    <h4>Hobby Supplies</h4>
+                                    <ul>
+                                        <li><a href="#">Putty & Filler</a></li>
+                                        <li><a href="#">Basing Materials</a></li>
+                                        <li><a href="#">Pigments</a></li>
+                                        <li><a href="#">Weathering Products</a></li>
+                                        <li><a href="#">Display Cases</a></li>
+                                    </ul>
+                                    <a href="#" class="view-all">View All →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </span>
                 <span class="nav-item">NEW ARRIVALS</span>
                 <span class="nav-item">SALE</span>
             </div>

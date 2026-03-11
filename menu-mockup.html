@@ -50,6 +50,7 @@
             display: flex;
             gap: 30px;
             position: relative;
+            overflow: visible;
         }
         
         .nav-item {
@@ -72,11 +73,12 @@
             position: absolute;
             top: 100%;
             left: 0;
-            right: 0;
+            width: 100%;
             background: white;
             box-shadow: 0 8px 16px rgba(0,0,0,0.2);
             padding: 30px 20px;
             z-index: 1000;
+            overflow: visible;
         }
         
         .nav-item:hover .mega-menu {
@@ -86,6 +88,7 @@
         .mega-menu-content {
             max-width: 1400px;
             margin: 0 auto;
+            width: 100%;
         }
         
         .mega-menu h3 {
@@ -175,6 +178,7 @@
         .more-brands {
             border-top: 1px solid #e9ecef;
             padding-top: 15px;
+            padding-bottom: 5px;
             margin-top: 5px;
         }
         
@@ -192,6 +196,7 @@
             flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
+            padding-bottom: 10px;
         }
         
         .brand-links a {
